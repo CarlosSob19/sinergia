@@ -76,6 +76,10 @@ export function Footer() {
         </div>
       </div>
 
+      <p className={styles.wordmark} aria-hidden="true" data-rise>
+        Sinergia
+      </p>
+
       <div className={`container ${styles.legal}`}>
         <p>© {new Date().getFullYear()} Sinergia Energy · Montería, Colombia</p>
         <Link href="/privacidad">Política de privacidad</Link>

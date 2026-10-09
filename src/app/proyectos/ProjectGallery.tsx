@@ -24,7 +24,7 @@ export function ProjectGallery() {
       <p className="sr-only" aria-live="polite">
         {list.length} proyectos
       </p>
-      <ul className={s.gallery}>
+      <ul className={s.gallery} data-stagger>
         {list.map((pr) => {
           const p = photo(pr.photo);
           return (

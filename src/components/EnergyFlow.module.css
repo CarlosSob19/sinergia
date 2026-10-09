@@ -1,0 +1,71 @@
+.flow {
+  margin: 4px 0 6px;
+  padding: 14px 16px 10px;
+  border-radius: var(--r-md);
+  background: rgb(255 255 255 / 0.04);
+  border: 1px solid rgb(255 255 255 / 0.1);
+}
+.flow svg {
+  width: 100%;
+  height: auto;
+}
+.wire {
+  fill: none;
+  stroke: rgb(255 255 255 / 0.16);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+.pulse {
+  fill: none;
+  stroke: var(--sun);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: 6 18;
+  animation: flow var(--flow) linear infinite;
+  filter: drop-shadow(0 0 4px rgb(245 165 36 / 0.8));
+}
+.slow {
+  animation-duration: calc(var(--flow) * 1.6);
+  opacity: 0.7;
+}
+@keyframes flow {
+  to {
+    stroke-dashoffset: -48;
+  }
+}
+.node {
+  fill: #0d3a47;
+  stroke: var(--brand);
+  stroke-width: 1.5;
+}
+.grid {
+  stroke: var(--brand);
+  stroke-width: 1;
+  opacity: 0.7;
+}
+.wave,
+.tower {
+  fill: none;
+  stroke: var(--sun);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.door {
+  fill: var(--sun);
+  opacity: 0.85;
+}
+.labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--on-night-muted);
+  margin-top: 4px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .pulse {
+    animation: none;
+    stroke-dasharray: none;
+    opacity: 0.6;
+  }
+}

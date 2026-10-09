@@ -18,7 +18,7 @@ export default function ForumPage() {
       <section className={s.photoHero}>
         <Image src={p.src} alt="" fill priority sizes="100vw" />
         <div className={`container ${s.inner}`}>
-          <h1 className="h1">{FORUM.name}</h1>
+          <h1 className="h1" data-split>{FORUM.name}</h1>
           <p className="lead">
             {FORUM.edition} · {FORUM.theme}.
           </p>
@@ -28,7 +28,7 @@ export default function ForumPage() {
       <section className="section">
         <div className={`container ${s.split}`}>
           <div className={s.sticky}>
-            <h2 className="h2">El Caribe lidera la transición energética de Colombia.</h2>
+            <h2 className="h2" data-split>El Caribe lidera la transición energética de Colombia.</h2>
           </div>
           <div style={{ display: "grid", gap: 24 }}>
             <p className="lead">{FORUM.context}</p>

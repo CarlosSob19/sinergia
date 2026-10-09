@@ -35,7 +35,7 @@ export default async function SolutionPage({ params }: { params: Promise<{ slug:
       <section className={s.photoHero}>
         <Image src={hero.src} alt="" fill priority sizes="100vw" />
         <div className={`container ${s.inner}`}>
-          <h1 className="h1">{sol.title}</h1>
+          <h1 className="h1" data-split>{sol.title}</h1>
           <p className="lead">{sol.lead}</p>
         </div>
       </section>
@@ -43,7 +43,7 @@ export default async function SolutionPage({ params }: { params: Promise<{ slug:
       <section className="section">
         <div className={`container ${s.split}`}>
           <div className={s.sticky}>
-            <h2 className="h2">Todo el proyecto, de principio a fin.</h2>
+            <h2 className="h2" data-split>Todo el proyecto, de principio a fin.</h2>
             <h3 className="h3" style={{ marginTop: 16 }}>
               Ideal para
             </h3>

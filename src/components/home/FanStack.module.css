@@ -1,0 +1,24 @@
+.stack {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  width: 100%;
+  max-width: 440px;
+  margin-inline: auto;
+}
+.card {
+  position: absolute;
+  inset: 6% 12%;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgb(11 31 38 / 0.25);
+  transform-origin: 50% 100%;
+}
+.card img {
+  object-fit: cover;
+}
+.card:nth-child(1) {
+  transform: rotate(-9deg) translateX(-24%);
+}
+.card:nth-child(3) {
+  transform: rotate(9deg) translateX(24%);
+}

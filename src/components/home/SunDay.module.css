@@ -1,0 +1,166 @@
+.day {
+  position: relative;
+  min-height: 100svh;
+  overflow: hidden;
+  color: #fff;
+  isolation: isolate;
+}
+.sky {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  /* Madrugada */
+  background: radial-gradient(120% 80% at 10% 100%, #f08a4b 0%, #8a3f5c 28%, #1e2c55 62%, #0a1530 100%);
+}
+.noon {
+  opacity: 0;
+  background: radial-gradient(120% 90% at 50% 0%, #4fb2e3 0%, #1f78b4 45%, #0d4a78 100%);
+}
+.dusk {
+  opacity: 0;
+  background: radial-gradient(120% 80% at 90% 100%, #ff9a3d 0%, #c2464f 30%, #3b1f4f 65%, #0b1228 100%);
+}
+.layout {
+  position: relative;
+  min-height: 100svh;
+  display: grid;
+  grid-template-columns: 1fr minmax(0, 420px);
+  grid-template-rows: auto 1fr;
+  padding-top: calc(var(--header-h) + 40px);
+}
+.head {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.title {
+  font-size: clamp(36px, 5.6vw, 84px);
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  max-width: 11ch;
+  text-shadow: 0 2px 30px rgb(0 0 0 / 0.25);
+}
+.readout {
+  display: grid;
+  gap: 8px;
+  min-width: 220px;
+}
+.clock {
+  font-family: var(--font-display);
+  font-size: clamp(48px, 6vw, 88px);
+  line-height: 1;
+  font-weight: 300;
+  letter-spacing: -0.03em;
+}
+.prod {
+  font-size: 15px;
+  color: rgb(255 255 255 / 0.85);
+}
+.prod strong {
+  font-family: var(--font-display);
+  font-size: 22px;
+  color: var(--sun);
+}
+.track {
+  height: 4px;
+  border-radius: 4px;
+  background: rgb(255 255 255 / 0.2);
+  overflow: hidden;
+}
+.fill {
+  display: block;
+  height: 100%;
+  background: var(--sun);
+  transform-origin: left;
+  transform: scaleX(0);
+}
+.steps {
+  grid-column: 2;
+  grid-row: 2;
+  position: relative;
+  list-style: none;
+  margin: 40px 0 0;
+  padding: 0;
+  z-index: 2;
+}
+.steps li {
+  position: absolute;
+  inset: 0 0 auto;
+  display: grid;
+  gap: 8px;
+  padding: 24px 26px;
+  border-radius: var(--r-md);
+  background: rgb(4 18 26 / 0.72);
+  box-shadow: 0 12px 40px rgb(0 0 0 / 0.25);
+}
+.steps span {
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  color: var(--sun);
+}
+.steps strong {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 500;
+}
+.steps p {
+  color: rgb(255 255 255 / 0.85);
+}
+.scene {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 72%;
+  z-index: 1;
+}
+.arcGuide {
+  fill: none;
+  stroke: rgb(255 255 255 / 0.18);
+  stroke-width: 1.5;
+  stroke-dasharray: 4 10;
+}
+.curve {
+  fill: none;
+  stroke: var(--sun);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+.horizon {
+  stroke: rgb(255 255 255 / 0.35);
+  stroke-width: 1;
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr;
+  }
+  .steps {
+    grid-column: 1;
+    grid-row: 2;
+    min-height: 170px;
+    margin-top: 24px;
+  }
+  .scene {
+    height: 50%;
+  }
+}
+
+/* Sin animación: el mediodía estático y los tres momentos como lista. */
+@media (prefers-reduced-motion: reduce) {
+  .noon {
+    opacity: 1;
+  }
+  .steps li {
+    position: static;
+    margin-bottom: 12px;
+  }
+  .curve {
+    stroke-dasharray: none;
+  }
+}

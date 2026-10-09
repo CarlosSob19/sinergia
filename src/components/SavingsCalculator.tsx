@@ -5,7 +5,13 @@ import { ArrowRight, Info, Leaf, Lightning, SolarPanel, Timer, TrendUp } from "@
 import { CITIES, SEGMENT_LABEL, estimateSavings, findCity, formatCop, validateBill, type Segment } from "@/lib/solar";
 import { whatsappUrl } from "@/lib/whatsapp";
 import { SITE } from "@/content/site";
+import { AnimatedNumber } from "./AnimatedNumber";
+import { EnergyFlow } from "./EnergyFlow";
 import styles from "./SavingsCalculator.module.css";
+
+const fmtCop = (n: number) => formatCop(n);
+const fmtInt = (n: number) => Math.round(n).toLocaleString("es-CO");
+const fmtOne = (n: number) => (Math.round(n * 10) / 10).toLocaleString("es-CO");
 
 const SEGMENTS: Segment[] = ["hogar", "empresas", "agro"];
 const parseCop = (s: string) => Number(s.replace(/\D/g, "") || NaN);
@@ -100,12 +106,16 @@ export function SavingsCalculator({ defaultSegment = "hogar" }: { defaultSegment
           <>
             <p className={styles.kicker}>Ahorro estimado</p>
             <p className={`${styles.big} num`}>
-              {formatCop(result.annualSavings)}
+              <AnimatedNumber value={result.annualSavings} format={fmtCop} />
               <span> al año</span>
             </p>
             <p className={styles.sub}>
-              Unos <strong className="num">{formatCop(result.monthlySavings)}</strong> menos en tu factura cada mes.
+              Unos <strong className="num">
+                <AnimatedNumber value={result.monthlySavings} format={fmtCop} />
+              </strong> menos en tu factura cada mes.
             </p>
+
+            <EnergyFlow kwp={result.systemKwp} />
 
             <dl className={styles.stats}>
               <div>
@@ -113,36 +123,44 @@ export function SavingsCalculator({ defaultSegment = "hogar" }: { defaultSegment
                   <SolarPanel size={20} aria-hidden="true" /> Sistema
                 </dt>
                 <dd className="num">
-                  {result.systemKwp.toLocaleString("es-CO")} kWp · {result.panels} paneles
+                  <AnimatedNumber value={result.systemKwp} format={fmtOne} /> kWp · <AnimatedNumber value={result.panels} format={fmtInt} /> paneles
                 </dd>
               </div>
               <div>
                 <dt>
                   <Lightning size={20} aria-hidden="true" /> Consumo cubierto
                 </dt>
-                <dd className="num">{result.monthlyKwh.toLocaleString("es-CO")} kWh/mes</dd>
+                <dd className="num">
+                  <AnimatedNumber value={result.monthlyKwh} format={fmtInt} /> kWh/mes
+                </dd>
               </div>
               <div>
                 <dt>
                   <Timer size={20} aria-hidden="true" /> Retorno
                 </dt>
-                <dd className="num">≈ {result.paybackYears.toLocaleString("es-CO")} años</dd>
+                <dd className="num">
+                  ≈ <AnimatedNumber value={result.paybackYears} format={fmtOne} /> años
+                </dd>
               </div>
               <div>
                 <dt>
                   <Leaf size={20} aria-hidden="true" /> CO₂ evitado
                 </dt>
-                <dd className="num">{result.co2KgPerYear.toLocaleString("es-CO")} kg/año</dd>
+                <dd className="num">
+                  <AnimatedNumber value={result.co2KgPerYear} format={fmtInt} /> kg/año
+                </dd>
               </div>
               <div className={styles.wide}>
                 <dt>
                   <TrendUp size={20} aria-hidden="true" /> Inversión aproximada
                 </dt>
-                <dd className="num">{formatCop(result.estimatedCost)}</dd>
+                <dd className="num">
+                  <AnimatedNumber value={result.estimatedCost} format={fmtCop} />
+                </dd>
               </div>
             </dl>
 
-            <a className="btn btn--block" href={whatsappUrl(SITE.whatsapp, message)} target="_blank" rel="noopener noreferrer">
+            <a className="btn btn--block" data-magnetic href={whatsappUrl(SITE.whatsapp, message)} target="_blank" rel="noopener noreferrer">
               Pedir visita técnica gratis
               <ArrowRight size={18} aria-hidden="true" />
             </a>

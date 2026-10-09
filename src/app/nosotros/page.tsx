@@ -17,7 +17,7 @@ export default function AboutPage() {
     <>
       <section className={s.pageHead}>
         <div className="container">
-          <h1 className="h1">Comprometidos con un futuro sostenible desde Montería.</h1>
+          <h1 className="h1" data-split>Comprometidos con un futuro sostenible desde Montería.</h1>
           <p className="lead">Energía solar para tu hogar, tu empresa y cualquier sitio donde llegue el sol.</p>
         </div>
       </section>
@@ -29,7 +29,7 @@ export default function AboutPage() {
       <section className="section">
         <div className={`container ${s.split}`}>
           <div className={s.sticky}>
-            <h2 className="h2">Liderar la transición energética del Caribe.</h2>
+            <h2 className="h2" data-split>Liderar la transición energética del Caribe.</h2>
           </div>
           <ul className={s.cards}>
             <li>

@@ -4,6 +4,10 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import { RevealObserver } from "@/components/RevealObserver";
+import { SmoothScroll } from "@/components/motion/SmoothScroll";
+import { MotionDirector } from "@/components/motion/MotionDirector";
+import { Cursor } from "@/components/motion/Cursor";
+import { Preloader } from "@/components/motion/Preloader";
 import { SITE } from "@/content/site";
 import "./globals.css";
 
@@ -57,9 +61,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="es-CO" className={`${outfit.variable} ${rubik.variable}`} suppressHydrationWarning>
       <head>
         {/* Marca que hay JS antes de pintar: solo entonces se ocultan los elementos que se revelan. */}
-        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "(function(d){d.classList.add('js');try{if(sessionStorage.getItem('sinergia-intro')!=='1'&&matchMedia('(prefers-reduced-motion: no-preference)').matches)d.dataset.intro='pending'}catch(e){}})(document.documentElement)",
+          }}
+        />
       </head>
       <body>
+        <Preloader />
         <a href="#contenido" className="skip">
           Saltar al contenido
         </a>
@@ -70,6 +80,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Footer />
         <WhatsAppFloat />
         <RevealObserver />
+        <SmoothScroll />
+        <MotionDirector />
+        <Cursor />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
       </body>
     </html>

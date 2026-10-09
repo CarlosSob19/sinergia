@@ -17,7 +17,7 @@ export default function ContactPage() {
     <>
       <section className={s.pageHead}>
         <div className="container">
-          <h1 className="h1">Hablemos de tu proyecto solar.</h1>
+          <h1 className="h1" data-split>Hablemos de tu proyecto solar.</h1>
           <p className="lead">Escríbenos y agendamos una visita técnica sin costo.</p>
         </div>
       </section>
