@@ -87,8 +87,8 @@
 }
 .sheet li {
   border-bottom: 1px solid rgb(255 255 255 / 0.1);
-  animation: slideIn 420ms var(--ease) both;
-  animation-delay: calc(var(--i) * 40ms);
+  animation: slideIn 250ms var(--ease) both;
+  animation-delay: calc(var(--i) * 30ms);
 }
 .sheet li a {
   display: block;
@@ -111,5 +111,15 @@
   }
   .toggle {
     display: inline-flex;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sheet li {
+    animation-name: fadeIn;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
 }

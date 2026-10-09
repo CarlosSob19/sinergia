@@ -54,7 +54,11 @@ const jsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es-CO" className={`${outfit.variable} ${rubik.variable}`}>
+    <html lang="es-CO" className={`${outfit.variable} ${rubik.variable}`} suppressHydrationWarning>
+      <head>
+        {/* Marca que hay JS antes de pintar: solo entonces se ocultan los elementos que se revelan. */}
+        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
+      </head>
       <body>
         <a href="#contenido" className="skip">
           Saltar al contenido

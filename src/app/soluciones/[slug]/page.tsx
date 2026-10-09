@@ -57,8 +57,8 @@ export default async function SolutionPage({ params }: { params: Promise<{ slug:
             </ul>
           </div>
           <ul className={s.cards}>
-            {sol.points.map((p, i) => (
-              <li key={p.title} className="reveal" style={{ ["--d" as string]: `${i * 80}ms` }}>
+            {sol.points.map((p) => (
+              <li key={p.title}>
                 <h3 className="h3">{p.title}</h3>
                 <p>{p.text}</p>
               </li>

@@ -32,7 +32,7 @@ export default function AboutPage() {
             <h2 className="h2">Liderar la transición energética del Caribe.</h2>
           </div>
           <ul className={s.cards}>
-            <li className="reveal">
+            <li>
               <h3 className="h3">Misión</h3>
               <p>
                 Liderar la revolución energética mediante la promoción y la instalación de sistemas de energía solar accesibles y sostenibles. Nos
@@ -40,7 +40,7 @@ export default function AboutPage() {
                 preservación del medio ambiente y al desarrollo de comunidades resilientes.
               </p>
             </li>
-            <li className="reveal">
+            <li>
               <h3 className="h3">Visión</h3>
               <p>
                 Un mundo donde la energía solar sea una de las fuentes renovables más al alcance de la comunidad. Nos esforzamos por ser líderes del sector,
@@ -62,7 +62,7 @@ export default function AboutPage() {
               { title: "Compromiso ambiental", text: "Minimizamos el impacto ambiental de nuestras operaciones y promovemos prácticas sostenibles." },
               { title: "Innovación continua", text: "Adoptamos nuevas tecnologías y prácticas para mejorar la eficiencia y el rendimiento de cada sistema." },
             ].map((v) => (
-              <li key={v.title} className="reveal">
+              <li key={v.title}>
                 <strong className="h3">{v.title}</strong>
                 <span>{v.text}</span>
               </li>

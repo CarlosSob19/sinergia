@@ -9,15 +9,50 @@
   isolation: isolate;
   overflow: hidden;
 }
+/* Momento focal — "llega la luz": la foto se descubre de izquierda a derecha
+   y una franja de sol cálido barre los paneles una sola vez. */
 .heroImg {
   object-fit: cover;
   object-position: 50% 60%;
   z-index: -2;
-  animation: heroZoom 14s var(--ease) both;
+  animation:
+    heroUncover 1100ms var(--ease-in-out) both,
+    heroSettle 2400ms var(--ease) both;
 }
-@keyframes heroZoom {
+@keyframes heroUncover {
   from {
-    transform: scale(1.08);
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+@keyframes heroSettle {
+  from {
+    transform: scale(1.06);
+  }
+}
+.heroSun {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(100deg, transparent 25%, rgb(255 186 72 / 0.38) 46%, rgb(255 214 140 / 0.5) 50%, rgb(255 186 72 / 0.38) 54%, transparent 75%);
+  mix-blend-mode: screen;
+  opacity: 0;
+  animation: heroSweep 1700ms var(--ease-in-out) 450ms both;
+}
+@keyframes heroSweep {
+  0% {
+    opacity: 1;
+    transform: translateX(-100%);
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(100%);
   }
 }
 .heroShade {
@@ -36,7 +71,7 @@
 }
 .heroTitle {
   max-width: 13ch;
-  animation: rise 1000ms var(--ease) 180ms both;
+  animation: rise 700ms var(--ease) 300ms both;
 }
 .heroTitle em {
   font-style: normal;
@@ -47,19 +82,19 @@
   margin-top: 24px;
   font-size: clamp(17px, 1.5vw, 20px);
   color: rgb(255 255 255 / 0.86);
-  animation: rise 1000ms var(--ease) 280ms both;
+  animation: rise 700ms var(--ease) 380ms both;
 }
 .heroCtas {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
   margin-top: 34px;
-  animation: rise 1000ms var(--ease) 360ms both;
+  animation: rise 700ms var(--ease) 460ms both;
 }
 @keyframes rise {
   from {
     opacity: 0;
-    transform: translateY(28px);
+    transform: translateY(20px);
   }
 }
 .heroFoot {
@@ -98,7 +133,7 @@
   border-radius: 999px;
   border: 1px solid rgb(255 255 255 / 0.4);
   color: #fff;
-  animation: bob 2.4s ease-in-out infinite;
+  animation: bob 2.4s ease-in-out 1.2s 3;
 }
 @keyframes bob {
   50% {
@@ -568,5 +603,28 @@
   }
   .scrollCue {
     display: none;
+  }
+}
+
+/* ---------- Movimiento reducido ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .heroImg {
+    animation: none;
+  }
+  .heroSun {
+    display: none;
+  }
+  .heroTitle,
+  .heroLead,
+  .heroCtas {
+    animation-name: fadeOnly;
+  }
+  .scrollCue {
+    animation: none;
+  }
+}
+@keyframes fadeOnly {
+  from {
+    opacity: 0;
   }
 }

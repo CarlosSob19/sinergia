@@ -7,7 +7,7 @@ export function CtaBand({ title = "¿Listo para producir tu propia energía?", t
   return (
     <section className="section">
       <div className="container">
-        <div className={`${s.cta} reveal`}>
+        <div className={s.cta}>
           <div>
             <h2 className="h2">{title}</h2>
             <p>{text}</p>

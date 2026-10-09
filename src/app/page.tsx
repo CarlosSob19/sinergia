@@ -37,6 +37,7 @@ export default function Home() {
       <section className={s.hero} aria-labelledby="hero-title">
         <Image src={hero.src} alt="" fill priority sizes="100vw" className={s.heroImg} />
         <div className={s.heroShade} aria-hidden="true" />
+        <span className={s.heroSun} aria-hidden="true" />
         <div className={`container ${s.heroInner}`}>
           <h1 id="hero-title" className={`h-display ${s.heroTitle}`}>
             Energía solar para donde <em>llegue el sol.</em>
@@ -107,9 +108,7 @@ export default function Home() {
             </h2>
             <p className="lead">Escribe el valor de tu factura y mira en segundos el tamaño del sistema que necesitas, tu ahorro y en cuánto tiempo recuperas la inversión.</p>
           </header>
-          <div className="reveal">
-            <SavingsCalculator />
-          </div>
+          <SavingsCalculator />
         </div>
       </section>
 
@@ -125,11 +124,11 @@ export default function Home() {
             <p className="lead">Desde una casa en Montería hasta una finca ganadera sin red eléctrica: diseñamos cada proyecto a la medida de tu consumo.</p>
           </header>
           <div className={s.solutions}>
-            {SOLUTIONS.map((sol, i) => {
+            {SOLUTIONS.map((sol) => {
               const Icon = SOLUTION_ICONS[sol.slug];
               const p = photo(sol.photo);
               return (
-                <Link key={sol.slug} href={`/soluciones/${sol.slug}`} className={`${s.solCard} reveal`} style={{ ["--d" as string]: `${i * 80}ms` }}>
+                <Link key={sol.slug} href={`/soluciones/${sol.slug}`} className={s.solCard}>
                   <Image src={p.src} alt="" fill sizes="(max-width: 900px) 100vw, 33vw" className={s.solImg} />
                   <div className={s.solBody}>
                     <span className={s.solIcon}>
@@ -157,10 +156,10 @@ export default function Home() {
             </h2>
           </header>
           <ul className={s.valuesList}>
-            {VALUES.map((v, i) => {
+            {VALUES.map((v) => {
               const Icon = VALUE_ICONS[v.icon];
               return (
-                <li key={v.title} className="reveal" style={{ ["--d" as string]: `${i * 70}ms` }}>
+                <li key={v.title}>
                   <Icon size={30} aria-hidden="true" />
                   <h3 className="h3">{v.title}</h3>
                   <p>{v.text}</p>
@@ -181,7 +180,7 @@ export default function Home() {
           </header>
           <ol className={s.steps}>
             {STEPS.map((st, i) => (
-              <li key={st.title} className="reveal" style={{ ["--d" as string]: `${i * 90}ms` }}>
+              <li key={st.title}>
                 <span className={`${s.stepNum} num`}>{String(i + 1).padStart(2, "0")}</span>
                 <h3 className="h3">{st.title}</h3>
                 <p>{st.text}</p>
@@ -208,7 +207,7 @@ export default function Home() {
             {featured.map((pr, i) => {
               const p = photo(pr.photo);
               return (
-                <li key={pr.photo} className={`${s.bentoItem} reveal`} style={{ ["--d" as string]: `${i * 60}ms` }}>
+                <li key={pr.photo} className={`${s.bentoItem} reveal`} style={{ ["--d" as string]: `${Math.min(i, 4) * 60}ms` }}>
                   <Image src={p.src} alt={`${pr.title}: paneles solares instalados por Sinergia`} fill sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 33vw" />
                   <div className={s.bentoCap}>
                     <span>{pr.type}</span>

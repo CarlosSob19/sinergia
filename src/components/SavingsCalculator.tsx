@@ -43,6 +43,11 @@ export function SavingsCalculator({ defaultSegment = "hogar" }: { defaultSegment
         <fieldset className={styles.segments}>
           <legend>¿Para dónde es el sistema?</legend>
           <div className={styles.seg}>
+            <span
+              className={styles.thumb}
+              aria-hidden="true"
+              style={{ transform: `translateX(calc(${SEGMENTS.indexOf(segment)} * (100% + 6px)))` }}
+            />
             {SEGMENTS.map((s) => (
               <label key={s} data-checked={segment === s}>
                 <input type="radio" name={`${id}-seg`} value={s} checked={segment === s} onChange={() => setSegment(s)} />

@@ -31,7 +31,22 @@
   background: var(--surface-2);
   border-radius: 999px;
 }
+.seg {
+  position: relative;
+}
+/* Píldora que se desliza al segmento elegido (indicador de estado). */
+.thumb {
+  position: absolute;
+  top: 6px;
+  bottom: 6px;
+  left: 6px;
+  width: calc((100% - 24px) / 3);
+  border-radius: 999px;
+  background: var(--ink);
+  transition: transform 250ms var(--ease-in-out);
+}
 .seg label {
+  z-index: 1;
   position: relative;
   display: grid;
   place-items: center;
@@ -43,11 +58,15 @@
   text-align: center;
   line-height: 1.15;
   cursor: pointer;
-  transition: background-color var(--t-base) var(--ease), color var(--t-base) var(--ease);
+  transition: color 250ms ease;
 }
 .seg label[data-checked="true"] {
-  background: var(--ink);
   color: var(--bg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .thumb {
+    transition-property: none;
+  }
 }
 .seg input {
   position: absolute;
