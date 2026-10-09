@@ -38,13 +38,12 @@ export default function Home() {
         <Image src={hero.src} alt="" fill priority sizes="100vw" className={s.heroImg} />
         <div className={s.heroShade} aria-hidden="true" />
         <div className={`container ${s.heroInner}`}>
-          <p className={`eyebrow ${s.heroEyebrow}`}>Montería · Córdoba · Caribe colombiano</p>
           <h1 id="hero-title" className={`h-display ${s.heroTitle}`}>
             Energía solar para donde <em>llegue el sol.</em>
           </h1>
           <p className={s.heroLead}>
-            Diseñamos, instalamos y mantenemos sistemas solares para hogares, empresas y fincas. Tú dejas de pagar de más por la energía; nosotros nos
-            encargamos del resto.
+            Diseñamos, instalamos y mantenemos sistemas solares para hogares, empresas y fincas en Montería, Córdoba y el Caribe. Tú dejas de pagar de más
+            por la energía; nosotros nos encargamos del resto.
           </p>
           <div className={s.heroCtas}>
             <a className="btn" href={whatsappUrl(SITE.whatsapp, "Hola Sinergia, quiero una cotización solar.")} target="_blank" rel="noopener noreferrer">
@@ -79,8 +78,7 @@ export default function Home() {
       <section id="manifiesto" className={`section ${s.manifesto}`}>
         <div className={`container ${s.manifestoGrid}`}>
           <div>
-            <p className="eyebrow">Sinergia · {SITE.tagline}</p>
-            <div style={{ marginTop: 28 }}>
+            <div>
               <WordReveal
                 text="Cada techo de Córdoba recibe sol todo el año. Nosotros lo convertimos en energía propia, ahorro real y un futuro más limpio para tu casa, tu empresa o tu finca."
                 highlight={["energía", "propia", "ahorro", "real"]}
@@ -104,7 +102,6 @@ export default function Home() {
       <section id="calculadora" className={`section ${s.calc}`} aria-labelledby="calc-title">
         <div className="container">
           <header className={s.head}>
-            <p className="eyebrow">Calculadora de ahorro</p>
             <h2 id="calc-title" className="h1">
               ¿Cuánto dejarías de pagar?
             </h2>
@@ -121,7 +118,6 @@ export default function Home() {
         <div className="container">
           <header className={`${s.head} ${s.headRow}`}>
             <div>
-              <p className="eyebrow">Soluciones</p>
               <h2 id="sol-title" className="h1">
                 Un sistema para cada techo.
               </h2>
@@ -156,7 +152,6 @@ export default function Home() {
       <section className={`section ${s.values}`} aria-labelledby="val-title">
         <div className={`container ${s.valuesGrid}`}>
           <header className={s.valuesHead}>
-            <p className="eyebrow">Oferta de valor</p>
             <h2 id="val-title" className="h1">
               No te vendemos paneles. Te acompañamos durante toda la vida del sistema.
             </h2>
@@ -180,7 +175,6 @@ export default function Home() {
       <section className={`section ${s.process}`} aria-labelledby="proc-title">
         <div className="container">
           <header className={s.head}>
-            <p className="eyebrow">Cómo trabajamos</p>
             <h2 id="proc-title" className="h1">
               De la factura al primer kilovatio, en cuatro pasos.
             </h2>
@@ -202,7 +196,6 @@ export default function Home() {
         <div className="container">
           <header className={`${s.head} ${s.headRow}`}>
             <div>
-              <p className="eyebrow">Proyectos</p>
               <h2 id="proj-title" className="h1">
                 Energía que ya se ve desde el aire.
               </h2>
@@ -232,13 +225,12 @@ export default function Home() {
       <section className={`section ${s.law}`} aria-labelledby="law-title">
         <div className={`container ${s.lawGrid}`}>
           <div>
-            <p className="eyebrow">Ley 1715 de 2014 · Ley 2099 de 2021</p>
             <h2 id="law-title" className="h1">
               Tu empresa puede recuperar parte de la inversión en impuestos.
             </h2>
             <p className="lead" style={{ marginTop: 20 }}>
-              Los proyectos de energía renovable tienen incentivos tributarios en Colombia. Te acompañamos en la certificación ante la UPME para que los
-              aproveches.
+              La Ley 1715 de 2014 y la Ley 2099 de 2021 dan incentivos tributarios a los proyectos de energía renovable. Te acompañamos en la certificación
+              ante la UPME para que los aproveches.
             </p>
           </div>
           <ul className={s.lawList}>
@@ -266,11 +258,12 @@ export default function Home() {
       <section className={s.forum} aria-labelledby="fier-title">
         <div className={`container ${s.forumGrid}`}>
           <div>
-            <p className="eyebrow">Organizamos el {FORUM.edition.toLowerCase()} del</p>
             <h2 id="fier-title" className="h1">
-              Foro Internacional de Energías Renovables
+              Organizamos el Foro Internacional de Energías Renovables
             </h2>
-            <p className={s.forumLead}>{FORUM.theme}.</p>
+            <p className={s.forumLead}>
+              {FORUM.edition}: {FORUM.theme.charAt(0).toLowerCase() + FORUM.theme.slice(1)}.
+            </p>
             <Link href="/foro" className="btn btn--ghost" style={{ marginTop: 28 }}>
               Conoce el FIER <ArrowRight size={18} aria-hidden="true" />
             </Link>
@@ -288,7 +281,6 @@ export default function Home() {
       <section className="section" aria-labelledby="faq-title">
         <div className={`container ${s.faqGrid}`}>
           <header className={s.faqHead}>
-            <p className="eyebrow">Preguntas frecuentes</p>
             <h2 id="faq-title" className="h1">
               Lo que todos preguntan antes de pasarse al sol.
             </h2>
@@ -301,7 +293,6 @@ export default function Home() {
       <section id="contacto" className={`section ${s.contact}`} aria-labelledby="contact-title">
         <div className={`container ${s.contactGrid}`}>
           <div>
-            <p className="eyebrow">Hablemos</p>
             <h2 id="contact-title" className="h-display" style={{ fontSize: "clamp(44px, 6vw, 84px)" }}>
               Tu techo ya está listo. ¿Y tú?
             </h2>

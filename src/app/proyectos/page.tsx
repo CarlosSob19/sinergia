@@ -14,7 +14,6 @@ export default function ProjectsPage() {
     <>
       <section className={s.pageHead}>
         <div className="container">
-          <p className="eyebrow">Proyectos</p>
           <h1 className="h1">Techos que ya producen su propia energía.</h1>
           <p className="lead">Una muestra de los sistemas que hemos instalado en alianza en Montería y la región: casas, comercios, bodegas, edificios y fincas.</p>
         </div>

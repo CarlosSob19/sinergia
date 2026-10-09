@@ -17,7 +17,6 @@ export default function AboutPage() {
     <>
       <section className={s.pageHead}>
         <div className="container">
-          <p className="eyebrow">Nosotros</p>
           <h1 className="h1">Comprometidos con un futuro sostenible desde Montería.</h1>
           <p className="lead">Energía solar para tu hogar, tu empresa y cualquier sitio donde llegue el sol.</p>
         </div>
@@ -30,7 +29,6 @@ export default function AboutPage() {
       <section className="section">
         <div className={`container ${s.split}`}>
           <div className={s.sticky}>
-            <p className="eyebrow">Propósito</p>
             <h2 className="h2">Liderar la transición energética del Caribe.</h2>
           </div>
           <ul className={s.cards}>
@@ -58,7 +56,7 @@ export default function AboutPage() {
           <h2 className="h2" style={{ marginBottom: 32 }}>
             Lo que te ofrecemos
           </h2>
-          <ul className={s.team} style={{ gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))" }}>
+          <ul className={s.team}>
             {[
               ...VALUES,
               { title: "Compromiso ambiental", text: "Minimizamos el impacto ambiental de nuestras operaciones y promovemos prácticas sostenibles." },
@@ -75,7 +73,6 @@ export default function AboutPage() {
 
       <section className="section">
         <div className="container">
-          <p className="eyebrow">Equipo</p>
           <h2 className="h2" style={{ margin: "16px 0 32px" }}>
             Las personas detrás de Sinergia
           </h2>

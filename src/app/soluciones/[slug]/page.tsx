@@ -35,7 +35,6 @@ export default async function SolutionPage({ params }: { params: Promise<{ slug:
       <section className={s.photoHero}>
         <Image src={hero.src} alt="" fill priority sizes="100vw" />
         <div className={`container ${s.inner}`}>
-          <p className="eyebrow">Soluciones · {sol.kicker}</p>
           <h1 className="h1">{sol.title}</h1>
           <p className="lead">{sol.lead}</p>
         </div>
@@ -44,7 +43,6 @@ export default async function SolutionPage({ params }: { params: Promise<{ slug:
       <section className="section">
         <div className={`container ${s.split}`}>
           <div className={s.sticky}>
-            <p className="eyebrow">Qué incluye</p>
             <h2 className="h2">Todo el proyecto, de principio a fin.</h2>
             <h3 className="h3" style={{ marginTop: 16 }}>
               Ideal para
@@ -72,7 +70,6 @@ export default async function SolutionPage({ params }: { params: Promise<{ slug:
       <section className={`section ${s.band}`} aria-labelledby="calc">
         <div className="container">
           <div style={{ display: "grid", gap: 16, marginBottom: 48, maxWidth: 760 }}>
-            <p className="eyebrow">Calculadora</p>
             <h2 id="calc" className="h1">
               Estima tu ahorro
             </h2>

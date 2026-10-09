@@ -34,13 +34,8 @@
   padding-top: calc(var(--header-h) + 64px);
   padding-bottom: 48px;
 }
-.heroEyebrow {
-  color: var(--sun);
-  animation: rise 900ms var(--ease) 100ms both;
-}
 .heroTitle {
   max-width: 13ch;
-  margin-top: 22px;
   animation: rise 1000ms var(--ease) 180ms both;
 }
 .heroTitle em {
@@ -247,9 +242,6 @@
   background: var(--night);
   color: var(--on-night);
 }
-.values :global(.eyebrow) {
-  color: var(--brand);
-}
 .valuesGrid {
   display: grid;
   grid-template-columns: 1fr 1.3fr;
@@ -404,7 +396,7 @@
   padding: 20px 24px;
   border-radius: var(--r-md);
   background: var(--surface);
-  border-left: 4px solid var(--sun);
+  box-shadow: 0 1px 2px rgb(11 31 38 / 0.05), 0 6px 18px rgb(11 31 38 / 0.06);
 }
 .lawList strong {
   font-family: var(--font-display);
@@ -423,17 +415,11 @@
   color: var(--on-night);
   padding-block: var(--section);
 }
-.forum :global(.eyebrow) {
-  color: var(--sun);
-}
 .forumGrid {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
   gap: clamp(32px, 6vw, 96px);
   align-items: center;
-}
-.forumGrid h2 {
-  margin-top: 18px;
 }
 .forumLead {
   margin-top: 18px;
@@ -488,9 +474,6 @@
   grid-template-columns: 1fr 1fr;
   gap: clamp(32px, 6vw, 96px);
   align-items: start;
-}
-.contactGrid h2 {
-  margin-top: 18px;
 }
 .contactList {
   display: grid;

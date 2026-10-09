@@ -10,7 +10,6 @@ export default function PrivacyPage() {
     <>
       <section className={s.pageHead}>
         <div className="container">
-          <p className="eyebrow">Legal</p>
           <h1 className="h1">Política de privacidad</h1>
         </div>
       </section>
