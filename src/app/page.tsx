@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Cpu, Headset, Ruler, Wrench } from "@phosphor-icons/react/dist/ssr";
-import { FAQ, FORUM, PROJECTS, SITE, VALUES } from "@/content/site";
+import { FAQ, FORUM, PROJECTS, VALUES } from "@/content/site";
 import { photo } from "@/content/photos";
 import { SavingsCalculator } from "@/components/SavingsCalculator";
 import { WordReveal } from "@/components/WordReveal";
@@ -198,30 +198,6 @@ export default function Home() {
             <p className="lead" style={{ marginTop: 24 }}>
               Cuéntanos de tu proyecto y te respondemos por WhatsApp. La visita técnica no tiene costo.
             </p>
-            <dl className={s.contactList}>
-              <div>
-                <dt>Oficina</dt>
-                <dd>
-                  {SITE.address.street}, {SITE.address.city}
-                </dd>
-              </div>
-              <div>
-                <dt>Asesores</dt>
-                <dd>
-                  {SITE.phones.map((p, i) => (
-                    <a key={p} href={`tel:${p.replace(/\s/g, "")}`}>
-                      <span className={s.advisor}>Asesor {i + 1}</span> {p}
-                    </a>
-                  ))}
-                </dd>
-              </div>
-              <div>
-                <dt>Correo</dt>
-                <dd>
-                  <a href={`mailto:${SITE.emails.comercial}`}>{SITE.emails.comercial}</a>
-                </dd>
-              </div>
-            </dl>
           </div>
           <div className={s.contactCard}>
             <QuoteForm />
