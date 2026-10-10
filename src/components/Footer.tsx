@@ -41,10 +41,12 @@ export function Footer() {
                 {SITE.address.city}, {SITE.address.region}
               </span>
             </li>
-            {SITE.phones.slice(0, 2).map((p) => (
+            {SITE.phones.map((p, i) => (
               <li key={p} className={styles.row}>
                 <Phone size={18} aria-hidden="true" />
-                <a href={tel(p)}>{p}</a>
+                <a href={tel(p)}>
+                  Asesor {i + 1} · {p}
+                </a>
               </li>
             ))}
             <li className={styles.row}>

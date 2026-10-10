@@ -266,6 +266,13 @@
 .contactList a {
   text-decoration: none;
 }
+.advisor {
+  display: inline-block;
+  min-width: 5.6em;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--brand-ink);
+}
 .contactList a:hover {
   color: var(--brand-ink);
 }

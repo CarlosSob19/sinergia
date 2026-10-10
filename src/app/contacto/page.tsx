@@ -35,11 +35,11 @@ export default function ContactPage() {
               </li>
               <li>
                 <h2 className="h3" style={{ display: "flex", gap: 10, alignItems: "center" }}>
-                  <Phone size={22} aria-hidden="true" /> Teléfonos
+                  <Phone size={22} aria-hidden="true" /> Asesores
                 </h2>
-                {SITE.phones.map((p) => (
+                {SITE.phones.map((p, i) => (
                   <a key={p} href={`tel:${p.replace(/\s/g, "")}`}>
-                    {p}
+                    <strong style={{ fontWeight: 500, color: "var(--brand-ink)" }}>Asesor {i + 1}</strong> · {p}
                   </a>
                 ))}
               </li>

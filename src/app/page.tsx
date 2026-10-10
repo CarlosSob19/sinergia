@@ -196,11 +196,11 @@ export default function Home() {
                 </dd>
               </div>
               <div>
-                <dt>Teléfonos</dt>
+                <dt>Asesores</dt>
                 <dd>
-                  {SITE.phones.slice(0, 2).map((p) => (
+                  {SITE.phones.map((p, i) => (
                     <a key={p} href={`tel:${p.replace(/\s/g, "")}`}>
-                      {p}
+                      <span className={s.advisor}>Asesor {i + 1}</span> {p}
                     </a>
                   ))}
                 </dd>
