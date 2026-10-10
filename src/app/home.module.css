@@ -51,6 +51,17 @@
 
 
 /* ---------- VALOR ---------- */
+.values,
+.forum {
+  position: relative;
+  /* clip y no hidden: hidden rompería los encabezados sticky. */
+  overflow: clip;
+}
+.valuesGrid,
+.forumGrid {
+  position: relative;
+  z-index: 1;
+}
 .values {
   background: var(--night);
   color: var(--on-night);

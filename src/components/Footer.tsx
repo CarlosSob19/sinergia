@@ -54,7 +54,9 @@ export function Footer() {
       </div>
 
       <p className={styles.wordmark} aria-hidden="true" data-rise>
-        Sinergia
+        {"Sinergia".split("").map((ch, i) => (
+          <span key={i}>{ch}</span>
+        ))}
       </p>
 
       <div className={`container ${styles.legal}`}>

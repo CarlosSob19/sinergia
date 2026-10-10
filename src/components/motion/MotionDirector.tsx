@@ -10,6 +10,7 @@ import { gsap, ScrollTrigger, SplitText, useGSAP, MOTION_OK } from "@/lib/gsap";
  *  - [data-stagger]   hijos que entran en cascada cuando el grupo aparece.
  *  - [data-count]     números que cuentan hasta su valor una vez.
  *  - [data-rise]      bloque que emerge desde abajo ligado al scroll.
+ *  - [data-spin]      isotipo que gira N grados mientras cruza la pantalla.
  * Sin movimiento reducido no se toca nada: el contenido ya está visible.
  */
 export function MotionDirector() {
@@ -81,6 +82,18 @@ export function MotionDirector() {
             el,
             { yPercent: 45, opacity: 0.2 },
             { yPercent: 0, opacity: 1, ease: "none", scrollTrigger: { trigger: el, start: "top bottom", end: "bottom bottom", scrub: true } },
+          );
+        });
+
+        gsap.utils.toArray<HTMLElement>("[data-spin]").forEach((el) => {
+          gsap.fromTo(
+            el,
+            { rotate: -Number(el.dataset.spin || 180) / 2 },
+            {
+              rotate: Number(el.dataset.spin || 180) / 2,
+              ease: "none",
+              scrollTrigger: { trigger: el, start: "top bottom", end: "bottom top", scrub: true },
+            },
           );
         });
 

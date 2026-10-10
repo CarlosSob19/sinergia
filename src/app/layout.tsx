@@ -8,6 +8,7 @@ import { SmoothScroll } from "@/components/motion/SmoothScroll";
 import { MotionDirector } from "@/components/motion/MotionDirector";
 import { Cursor } from "@/components/motion/Cursor";
 import { Preloader } from "@/components/motion/Preloader";
+import { PageTransition } from "@/components/motion/PageTransition";
 import { SITE } from "@/content/site";
 import "./globals.css";
 
@@ -84,6 +85,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <SmoothScroll />
         <MotionDirector />
         <Cursor />
+        <PageTransition />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
       </body>
     </html>

@@ -454,3 +454,164 @@ html.lenis body {
   padding-block: 0.12em 0.18em;
   margin-block: -0.12em -0.18em;
 }
+
+/* ---------- Cortina entre páginas ---------- */
+.page-curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 280;
+  display: none;
+  place-items: center;
+  background: radial-gradient(80% 60% at 50% 40%, var(--night-2), var(--night));
+  color: var(--brand);
+}
+
+/* ---------- Sistema de pétalos (isotipo como recurso gráfico) ---------- */
+.petal-divider {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: min(100% - 2 * var(--gutter), var(--container));
+  margin: 0 auto;
+  color: var(--brand);
+}
+.petal-divider span {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, currentColor 40%, currentColor 60%, transparent);
+  opacity: 0.35;
+}
+.petal-divider--sun {
+  color: var(--sun);
+}
+.petal-divider--light {
+  color: #fff;
+}
+.petal-watermark {
+  position: absolute;
+  top: 50%;
+  z-index: 0;
+  width: 720px;
+  height: 720px;
+  margin-top: -360px;
+  color: #fff;
+  opacity: 0.04;
+  pointer-events: none;
+}
+.petal-watermark--right {
+  right: -220px;
+}
+.petal-watermark--left {
+  left: -260px;
+}
+@media (max-width: 700px) {
+  .petal-watermark {
+    width: 460px;
+    height: 460px;
+    margin-top: -230px;
+  }
+  .petal-watermark svg {
+    width: 460px;
+    height: 460px;
+  }
+}
+
+/* ---------- Destello de sol en botones ---------- */
+.btn {
+  background-image: linear-gradient(110deg, transparent 35%, rgb(255 255 255 / 0.55) 50%, transparent 65%);
+  background-size: 260% 100%;
+  background-position: 130% 0;
+  background-repeat: no-repeat;
+}
+.btn--ghost,
+.btn--dark {
+  background-image: linear-gradient(110deg, transparent 35%, rgb(245 165 36 / 0.35) 50%, transparent 65%);
+}
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover {
+    background-position: -30% 0;
+    transition:
+      transform var(--t-fast) var(--ease),
+      background-color var(--t-base) var(--ease),
+      border-color var(--t-base) var(--ease),
+      color var(--t-base) var(--ease),
+      background-position 750ms var(--ease);
+  }
+}
+
+/* ---------- Contacto rápido: burbuja (escritorio) y barra inferior (móvil) ---------- */
+.wa-float {
+  position: fixed;
+  right: max(16px, env(safe-area-inset-right));
+  bottom: max(16px, env(safe-area-inset-bottom));
+  z-index: 50;
+  width: 58px;
+  height: 58px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: #1f9d55;
+  color: #fff;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 0.25);
+  transition: transform var(--t-base) var(--ease);
+}
+@media (hover: hover) and (pointer: fine) {
+  .wa-float:hover {
+    transform: scale(1.06);
+  }
+}
+.mobile-dock {
+  display: none;
+}
+@media (max-width: 700px) {
+  .wa-float {
+    display: none;
+  }
+  .mobile-dock {
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    bottom: max(12px, env(safe-area-inset-bottom));
+    z-index: 50;
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 8px;
+    padding: 8px;
+    border-radius: 22px;
+    background: color-mix(in srgb, var(--night) 92%, transparent);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 12px 34px rgb(0 0 0 / 0.3);
+    border: 1px solid rgb(255 255 255 / 0.1);
+  }
+  .mobile-dock a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 50px;
+    border-radius: 16px;
+    font-weight: 500;
+    text-decoration: none;
+    touch-action: manipulation;
+    transition: transform var(--t-fast) var(--ease);
+  }
+  .mobile-dock a:active {
+    transform: scale(0.97);
+  }
+  .mobile-dock__call {
+    background: rgb(255 255 255 / 0.1);
+    color: #fff;
+  }
+  .mobile-dock__wa {
+    background: #25d366;
+    color: #052e16;
+  }
+  /* Espacio para que la barra no tape el final del pie de página. */
+  body > footer {
+    padding-bottom: calc(110px + env(safe-area-inset-bottom)) !important;
+  }
+}
+[data-menu="open"] .mobile-dock {
+  display: none !important;
+}

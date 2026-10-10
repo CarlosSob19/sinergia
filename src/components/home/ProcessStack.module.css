@@ -1,9 +1,13 @@
 .process {
+  position: relative;
+  overflow: clip;
   background: var(--night);
   color: var(--on-night);
   padding-block: var(--section);
 }
 .grid {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: 1fr 1.25fr;
   gap: clamp(32px, 6vw, 96px);

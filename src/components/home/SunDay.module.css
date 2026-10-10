@@ -135,7 +135,86 @@
   stroke-width: 1;
 }
 
+/* ---------- Seguidor solar en 3D (CSS) ---------- */
+.tracker {
+  --tilt: -10deg;
+  --glare-x: 50%;
+  --glare-o: 0.7;
+  position: absolute;
+  left: 50%;
+  bottom: 4%;
+  z-index: 2;
+  width: min(46vw, 560px);
+  aspect-ratio: 1.6;
+  transform: translateX(-50%);
+  perspective: 1100px;
+  perspective-origin: 50% -40%;
+}
+.panel {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  transform: rotateX(62deg) rotateY(var(--tilt));
+  border-radius: 10px;
+  background: linear-gradient(160deg, #24557a 0%, #0f2c46 55%, #0a1f33 100%);
+  border: 3px solid #c9d6de;
+  box-shadow:
+    0 30px 60px rgb(0 0 0 / 0.45),
+    inset 0 0 0 1px rgb(255 255 255 / 0.15);
+  overflow: hidden;
+}
+.cells {
+  position: absolute;
+  inset: 6px;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  gap: 3px;
+}
+.cells span {
+  border-radius: 2px;
+  background:
+    linear-gradient(90deg, transparent 47%, rgb(255 255 255 / 0.18) 47% 53%, transparent 53%),
+    linear-gradient(160deg, #2c6a96 0%, #133a5c 100%);
+}
+.glare {
+  position: absolute;
+  inset: -20% auto -20% 0;
+  width: 45%;
+  left: var(--glare-x);
+  background: linear-gradient(100deg, transparent, rgb(255 236 190 / 0.85) 50%, transparent);
+  opacity: var(--glare-o);
+  mix-blend-mode: screen;
+  filter: blur(6px);
+}
+.post {
+  position: absolute;
+  left: 50%;
+  top: 52%;
+  width: 14px;
+  height: 46%;
+  transform: translateX(-50%);
+  border-radius: 4px;
+  background: linear-gradient(90deg, #8aa0ad, #d6e1e8 50%, #7d929f);
+  z-index: -1;
+}
+.shadow {
+  position: absolute;
+  left: 50%;
+  bottom: -4%;
+  width: 70%;
+  height: 12%;
+  transform: translateX(calc(-50% + var(--shadow-x, 0px)));
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgb(0 0 0 / 0.45), transparent);
+  z-index: -2;
+}
+
 @media (max-width: 900px) {
+  .tracker {
+    width: 78vw;
+    bottom: 3%;
+  }
   .layout {
     grid-template-columns: 1fr;
     grid-template-rows: auto auto 1fr;
@@ -147,7 +226,16 @@
     margin-top: 24px;
   }
   .scene {
-    height: 50%;
+    height: 60%;
+    left: -18%;
+    right: -18%;
+    width: 136%;
+  }
+  .steps li {
+    padding: 18px 20px;
+  }
+  .steps strong {
+    font-size: 24px;
   }
 }
 

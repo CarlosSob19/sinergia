@@ -105,3 +105,22 @@
   user-select: none;
   overflow: hidden;
 }
+
+/* Cada letra del wordmark se enciende de sol al pasar el puntero; las vecinas, a medias. */
+.wordmark span {
+  display: inline-block;
+  transition: color 500ms var(--ease), transform 500ms var(--ease);
+}
+@media (hover: hover) and (pointer: fine) {
+  .wordmark span:hover {
+    color: var(--sun);
+    transform: translateY(-6%);
+    transition-duration: 150ms;
+  }
+  .wordmark span:has(+ span:hover),
+  .wordmark span:hover + span {
+    color: color-mix(in srgb, var(--sun) 55%, transparent);
+    transform: translateY(-3%);
+    transition-duration: 200ms;
+  }
+}

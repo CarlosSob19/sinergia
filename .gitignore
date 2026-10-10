@@ -10,3 +10,5 @@ next-env.d.ts
 .playwright-cli/
 
 .vercel
+scrollcraft/node_modules
+scrollcraft/builds/*/lab

@@ -1,0 +1,94 @@
+.hero {
+  position: relative;
+  min-height: 92svh;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  color: #fff;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--bg);
+}
+.frame {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  background: var(--night);
+}
+.imgWrap {
+  position: absolute;
+  inset: 0;
+  transform-origin: 50% 65%;
+}
+.img {
+  object-fit: cover;
+}
+.shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgb(4 22 28 / 0.6) 0%, rgb(4 22 28 / 0) 32%),
+    linear-gradient(0deg, rgb(4 22 28 / 0.92) 0%, rgb(4 22 28 / 0.25) 60%, rgb(4 22 28 / 0.1) 100%);
+}
+.copy {
+  align-self: end;
+  padding-top: calc(var(--header-h) + 64px);
+  padding-bottom: 36px;
+}
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(44px, 7.4vw, 112px);
+  font-weight: 500;
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+  max-width: 14ch;
+}
+.title > div {
+  padding-block: 0.12em 0.18em;
+  margin-block: -0.12em -0.18em;
+}
+.title em {
+  font-style: normal;
+  color: var(--sun);
+}
+:global(.js) .title {
+  visibility: hidden;
+}
+.rest {
+  display: grid;
+  gap: 24px;
+  justify-items: start;
+  margin-top: 24px;
+}
+.lead {
+  max-width: 54ch;
+  font-size: clamp(17px, 1.5vw, 21px);
+  color: rgb(255 255 255 / 0.88);
+}
+.foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding-block: 18px 24px;
+  border-top: 1px solid rgb(255 255 255 / 0.18);
+}
+.caption {
+  font-size: 13px;
+  color: rgb(255 255 255 / 0.72);
+}
+.cue {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  margin-left: auto;
+  border-radius: 999px;
+  border: 1px solid rgb(255 255 255 / 0.4);
+  color: #fff;
+}
+@media (prefers-reduced-motion: reduce) {
+  :global(.js) .title {
+    visibility: visible;
+  }
+}

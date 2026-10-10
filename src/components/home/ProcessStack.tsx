@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { STEPS } from "@/content/site";
 import { gsap, useGSAP, MOTION_OK } from "@/lib/gsap";
+import { PetalWatermark } from "../Petals";
 import s from "./ProcessStack.module.css";
 
 /**
@@ -39,6 +40,7 @@ export function ProcessStack() {
 
   return (
     <section ref={root} className={s.process} aria-labelledby="proc-title">
+      <PetalWatermark side="left" />
       <div className={`container ${s.grid}`}>
         <header className={s.head}>
           <h2 id="proc-title" className={s.title} data-split>

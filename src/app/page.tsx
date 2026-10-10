@@ -13,6 +13,8 @@ import { Marquee } from "@/components/home/Marquee";
 import { SolutionsRail } from "@/components/home/SolutionsRail";
 import { ProcessStack } from "@/components/home/ProcessStack";
 import { FanStack } from "@/components/home/FanStack";
+import { PetalDivider, PetalWatermark } from "@/components/Petals";
+import { CoverageMap } from "@/components/CoverageMap";
 import s from "./home.module.css";
 
 const VALUE_ICONS = { wrench: Wrench, headset: Headset, cpu: Cpu, ruler: Ruler } as const;
@@ -56,6 +58,7 @@ export default function Home() {
 
       {/* VALOR */}
       <section className={`section ${s.values}`} aria-labelledby="val-title">
+        <PetalWatermark side="right" />
         <div className={`container ${s.valuesGrid}`}>
           <header className={s.valuesHead}>
             <h2 id="val-title" className={s.bigTitle} data-split>
@@ -81,6 +84,8 @@ export default function Home() {
 
       {/* PROYECTOS */}
       <section className="section" aria-labelledby="proj-title">
+        <PetalDivider />
+        <div style={{ height: "clamp(48px, 7vw, 96px)" }} />
         <div className="container">
           <header className={`${s.head} ${s.headRow}`}>
             <h2 id="proj-title" className={s.bigTitle} data-split>
@@ -108,6 +113,8 @@ export default function Home() {
           </ul>
         </div>
       </section>
+
+      <CoverageMap />
 
       {/* LEY 1715 */}
       <section className={`section ${s.law}`} aria-labelledby="law-title">
@@ -144,6 +151,7 @@ export default function Home() {
 
       {/* FORO FIER */}
       <section className={s.forum} aria-labelledby="fier-title">
+        <PetalWatermark side="left" />
         <div className={`container ${s.forumGrid}`}>
           <div>
             <h2 id="fier-title" className={s.bigTitle} data-split>
@@ -168,6 +176,8 @@ export default function Home() {
 
       {/* FAQ */}
       <section className="section" aria-labelledby="faq-title">
+        <PetalDivider tone="sun" />
+        <div style={{ height: "clamp(48px, 7vw, 96px)" }} />
         <div className={`container ${s.faqGrid}`}>
           <header className={s.faqHead}>
             <h2 id="faq-title" className={s.bigTitle} data-split>

@@ -68,9 +68,12 @@ export function SolutionsRail() {
           </h2>
           <p className="lead">Desde una casa en Montería hasta una finca ganadera sin red eléctrica: diseñamos cada proyecto a la medida de tu consumo.</p>
           <p className={s.hint} aria-hidden="true">
-            Sigue bajando <span>→</span>
+            <span className={s.hintDesk}>Sigue bajando</span>
+            <span className={s.hintMob}>Desliza</span> <span className={s.arrow}>→</span>
           </p>
         </header>
+        {/* En escritorio este contenedor es transparente (display: contents); en móvil es el carrusel. */}
+        <div className={s.cards}>
         {SOLUTIONS.map((sol, i) => {
           const Icon = ICONS[sol.slug];
           const p = photo(sol.photo);
@@ -95,6 +98,7 @@ export function SolutionsRail() {
             </Link>
           );
         })}
+        </div>
       </div>
     </section>
   );

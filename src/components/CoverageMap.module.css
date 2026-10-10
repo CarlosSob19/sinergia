@@ -1,0 +1,217 @@
+.section {
+  padding-block: var(--section);
+  background:
+    radial-gradient(70% 60% at 30% 40%, color-mix(in srgb, var(--brand) 14%, transparent), transparent 70%),
+    var(--surface-2);
+  overflow: clip;
+}
+.grid {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: clamp(24px, 5vw, 72px);
+  align-items: center;
+}
+.mapWrap {
+  position: relative;
+}
+.svg {
+  width: 100%;
+  height: auto;
+  max-height: 82svh;
+  overflow: visible;
+}
+.neighbor {
+  fill: none;
+  stroke: color-mix(in srgb, var(--ink) 18%, transparent);
+  stroke-width: 1.2;
+  stroke-dasharray: 3 5;
+}
+.neighborLabel {
+  font-family: var(--font-display);
+  font-size: 22px;
+  fill: color-mix(in srgb, var(--ink) 35%, transparent);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.fill {
+  fill: color-mix(in srgb, var(--brand) 16%, var(--surface));
+}
+.dot {
+  fill: color-mix(in srgb, var(--brand) 45%, transparent);
+}
+.outline {
+  fill: none;
+  stroke: var(--brand-ink);
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+}
+.dept {
+  font-family: var(--font-display);
+  font-size: 40px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  fill: var(--brand-ink);
+  opacity: 0.85;
+}
+.ripple {
+  fill: none;
+  stroke: var(--sun);
+  stroke-width: 2;
+  transform-origin: center;
+  transform-box: fill-box;
+  animation: ripple 2.8s var(--ease) infinite;
+}
+.ripple2 {
+  animation-delay: 1.4s;
+}
+@keyframes ripple {
+  from {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  to {
+    transform: scale(5);
+    opacity: 0;
+  }
+}
+.pin {
+  cursor: pointer;
+  outline: none;
+}
+.hit {
+  fill: transparent;
+}
+.pinDot {
+  fill: var(--surface);
+  stroke: var(--brand-ink);
+  stroke-width: 3;
+  transition: fill var(--t-base) var(--ease), stroke var(--t-base) var(--ease), r var(--t-base) var(--ease);
+}
+.pin[data-hq="true"] .pinDot {
+  fill: var(--sun);
+  stroke: var(--night);
+}
+.pinCore {
+  fill: var(--night);
+}
+.pin[data-active="true"] .pinDot {
+  fill: var(--sun);
+  stroke: var(--night);
+  stroke-width: 4;
+}
+.pin:focus-visible .pinDot {
+  stroke: var(--ring);
+  stroke-width: 5;
+}
+.pinLabel {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 500;
+  fill: var(--ink);
+  paint-order: stroke;
+  stroke: var(--surface-2);
+  stroke-width: 6px;
+  stroke-linejoin: round;
+  pointer-events: none;
+}
+.pin[data-active="true"] .pinLabel {
+  font-weight: 700;
+}
+@media (hover: hover) and (pointer: fine) {
+  .pin:hover .pinDot {
+    fill: var(--sun);
+  }
+}
+
+.panel {
+  display: grid;
+  gap: 20px;
+}
+.title {
+  font-size: clamp(36px, 4.4vw, 64px);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+.card {
+  display: grid;
+  gap: 14px;
+  padding: clamp(20px, 2.6vw, 30px);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  animation: cardIn 450ms var(--ease) both;
+}
+@keyframes cardIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+.cityName {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-size: clamp(26px, 3vw, 36px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+.cityName svg {
+  color: var(--sun);
+}
+.meta {
+  color: var(--ink-muted);
+}
+.meta strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+.copy {
+  color: var(--ink-muted);
+}
+.thumbs {
+  list-style: none;
+  margin: 4px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+.thumbs li {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--surface-2);
+}
+.thumbs img {
+  object-fit: cover;
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 4px;
+}
+.hint {
+  font-size: 14px;
+  color: var(--ink-muted);
+}
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .svg {
+    max-height: 70svh;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ripple {
+    animation: none;
+    opacity: 0;
+  }
+  .card {
+    animation: none;
+  }
+}

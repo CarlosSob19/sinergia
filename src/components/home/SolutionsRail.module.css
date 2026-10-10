@@ -27,7 +27,13 @@
   font-weight: 500;
   color: var(--brand-ink);
 }
-.hint span {
+.cards {
+  display: contents;
+}
+.hintMob {
+  display: none;
+}
+.arrow {
   display: inline-block;
   animation: nudge 1.6s var(--ease-in-out) infinite;
 }
@@ -113,21 +119,40 @@
 
 @media (max-width: 900px) {
   .track {
-    flex-direction: column;
+    display: block;
     width: auto;
     min-height: 0;
-    padding: var(--section) var(--gutter);
+    padding: var(--section) 0;
   }
   .intro {
     width: auto;
-    padding: 0 0 16px;
+    padding: 0 var(--gutter) 28px;
   }
-  .hint {
+  .hintDesk {
+    display: none;
+  }
+  .hintMob {
+    display: inline;
+  }
+  /* Carrusel deslizable con el dedo, cada tarjeta encaja al soltar. */
+  .cards {
+    display: flex;
+    gap: 14px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--gutter);
+    padding: 4px var(--gutter) 12px;
+    scrollbar-width: none;
+    overscroll-behavior-x: contain;
+  }
+  .cards::-webkit-scrollbar {
     display: none;
   }
   .card {
-    width: 100%;
+    flex: 0 0 min(84vw, 420px);
+    width: auto;
     grid-template-columns: 1fr;
+    scroll-snap-align: start;
   }
   .media {
     aspect-ratio: 4 / 3;
@@ -140,7 +165,7 @@
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .hint span {
+  .arrow {
     animation: none;
   }
 }

@@ -12,7 +12,7 @@ const STEPS = [
 
 // Arco del sol = curva de producción: el sol dibuja la energía que generas.
 const ARC = "M 80 470 C 330 -60, 870 -60, 1120 470";
-const PANELS = Array.from({ length: 9 }, (_, i) => i);
+const CELLS = Array.from({ length: 6 * 10 }, (_, i) => i);
 
 /**
  * "Un día de sol en Montería": sección fija mientras el scroll avanza de 6:00 a 18:00.
@@ -30,6 +30,7 @@ export function SunDay() {
         const clock = q("[data-clock]")[0] as HTMLElement;
         const pct = q("[data-pct]")[0] as HTMLElement;
         const bar = q("[data-bar]")[0] as HTMLElement;
+        const tracker = q("[data-tracker]")[0] as HTMLElement;
         const curve = q("[data-curve]")[0] as unknown as SVGPathElement;
         const len = curve.getTotalLength();
         gsap.set(curve, { strokeDasharray: len, strokeDashoffset: len });
@@ -53,6 +54,11 @@ export function SunDay() {
               const prod = Math.round(Math.sin(Math.PI * p) ** 1.5 * 100);
               pct.textContent = String(prod);
               bar.style.transform = `scaleX(${prod / 100})`;
+              // Seguidor solar: el panel gira de este a oeste mirando al sol y el reflejo lo recorre.
+              tracker.style.setProperty("--tilt", `${(-52 + 104 * p).toFixed(2)}deg`);
+              tracker.style.setProperty("--glare-x", `${(-60 + 220 * p).toFixed(1)}%`);
+              tracker.style.setProperty("--glare-o", (0.15 + 0.85 * Math.sin(Math.PI * p)).toFixed(3));
+              tracker.style.setProperty("--shadow-x", `${((0.5 - p) * 90).toFixed(1)}px`);
             },
           },
         });
@@ -63,10 +69,7 @@ export function SunDay() {
           // Cielo: madrugada → mediodía → atardecer
           .to(q("[data-sky=noon]"), { opacity: 1, duration: 0.4 }, 0.1)
           .to(q("[data-sky=dusk]"), { opacity: 1, duration: 0.35 }, 0.62)
-          // Paneles: brillo según la altura del sol
-          .to(q("[data-glare]"), { opacity: 0.9, duration: 0.5, ease: "sine.inOut" }, 0)
-          .to(q("[data-glare]"), { opacity: 0.1, duration: 0.5, ease: "sine.inOut" }, 0.5)
-          .to(q("[data-house]"), { opacity: 1, duration: 0.15 }, 0.85);
+          ;
 
         // Textos por momento del día
         const steps = q("[data-step]");
@@ -151,22 +154,20 @@ export function SunDay() {
 
           <line x1="0" y1="470" x2="1200" y2="470" className={s.horizon} />
 
-          {/* Techo con paneles */}
-          <g transform="translate(240 488)">
-            <path d="M -40 132 L 40 18 L 680 18 L 760 132 Z" fill="#0b2830" />
-            {PANELS.map((i) => (
-              <g key={i} transform={`translate(${70 + i * 66} 30) skewX(-18)`}>
-                <rect width="58" height="84" rx="3" fill="url(#sd-panel)" stroke="#2c5a78" strokeWidth="1.5" />
-                <path d="M 0 28 H 58 M 0 56 H 58 M 29 0 V 84" stroke="#2c5a78" strokeWidth="1" />
-              </g>
-            ))}
-            <rect data-glare x="40" y="26" width="640" height="92" fill="url(#sd-glare)" opacity="0.1" style={{ mixBlendMode: "screen" }} />
-            <g data-house opacity="0.25">
-              <rect x="690" y="-30" width="22" height="34" rx="3" fill="#f5a524" />
-              <rect x="720" y="-18" width="22" height="22" rx="3" fill="#f5a524" opacity="0.7" />
-            </g>
-          </g>
         </svg>
+
+        <div className={s.tracker} data-tracker aria-hidden="true">
+          <div className={s.panel}>
+            <div className={s.cells}>
+              {CELLS.map((c) => (
+                <span key={c} />
+              ))}
+            </div>
+            <span className={s.glare} />
+          </div>
+          <span className={s.post} />
+          <span className={s.shadow} />
+        </div>
       </div>
     </section>
   );

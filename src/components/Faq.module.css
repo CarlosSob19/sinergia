@@ -32,3 +32,34 @@
   color: var(--ink-muted);
   max-width: 70ch;
 }
+
+/* Despliegue suave donde el navegador lo soporta (Chrome/Edge); en el resto abre al instante. */
+.item {
+  interpolate-size: allow-keywords;
+}
+.item::details-content {
+  block-size: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition:
+    block-size 380ms var(--ease),
+    opacity 300ms ease,
+    content-visibility 380ms allow-discrete;
+}
+.item[open]::details-content {
+  block-size: auto;
+  opacity: 1;
+}
+.item summary {
+  transition: color var(--t-fast) var(--ease);
+}
+@media (hover: hover) and (pointer: fine) {
+  .item summary:hover {
+    color: var(--brand-ink);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .item::details-content {
+    transition: none;
+  }
+}
