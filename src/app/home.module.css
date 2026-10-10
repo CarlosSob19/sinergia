@@ -12,8 +12,8 @@
   line-height: 0.92;
 }
 :global(.split-line) {
-  padding-bottom: 0.08em;
-  margin-bottom: -0.08em;
+  padding-block: 0.12em 0.18em;
+  margin-block: -0.12em -0.18em;
 }
 
 /* ---------- Encabezados de sección ---------- */

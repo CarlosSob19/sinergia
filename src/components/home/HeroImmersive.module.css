@@ -65,6 +65,11 @@
 :global(.js) .title {
   visibility: hidden;
 }
+/* Máscaras de línea que crea SplitText: espacio para tildes y la cola de g/p/q. */
+.title > div {
+  padding-block: 0.14em 0.2em;
+  margin-block: -0.14em -0.2em;
+}
 .title em {
   font-style: normal;
   color: var(--sun);

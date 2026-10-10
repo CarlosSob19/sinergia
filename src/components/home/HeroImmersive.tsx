@@ -26,7 +26,8 @@ export function HeroImmersive() {
         const split = SplitText.create(q("[data-title]")[0], { type: "lines,chars", mask: "lines" });
         gsap.set(q("[data-title]"), { visibility: "visible" });
 
-        const intro = gsap.timeline({ paused: true, defaults: { ease: "expo.out" } });
+        // Al terminar, se quitan las máscaras: el titular queda como texto normal, sin recortes.
+        const intro = gsap.timeline({ paused: true, defaults: { ease: "expo.out" }, onComplete: () => split.revert() });
         intro
           .fromTo(q("[data-frame]"), { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 1.4, ease: "expo.inOut" })
           .from(q("[data-img]"), { scale: 1.35, duration: 2.6, ease: "expo.out" }, 0)

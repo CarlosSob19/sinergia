@@ -448,3 +448,9 @@ html.lenis body {
 [data-menu="open"] .wa-float {
   display: none !important;
 }
+
+/* Máscaras de títulos animados (todas las páginas): espacio para tildes y descendentes. */
+[data-split] > div {
+  padding-block: 0.12em 0.18em;
+  margin-block: -0.12em -0.18em;
+}

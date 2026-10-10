@@ -30,6 +30,8 @@ export function MotionDirector() {
             ease: "expo.out",
             stagger: 0.09,
             scrollTrigger: { trigger: el, start: "top 88%", once: true },
+            // Sin máscaras al terminar: nada queda recortado si cambia el ancho de la ventana.
+            onComplete: () => split.revert(),
           });
         });
 
