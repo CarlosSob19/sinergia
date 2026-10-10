@@ -107,7 +107,7 @@ export function SavingsCalculator({ defaultSegment = "hogar" }: { defaultSegment
             <p className={styles.kicker}>Ahorro estimado</p>
             <p className={`${styles.big} num`}>
               <AnimatedNumber value={result.annualSavings} format={fmtCop} />
-              <span> al año</span>
+              <span className={styles.per}> al año</span>
             </p>
             <p className={styles.sub}>
               Unos <strong className="num">

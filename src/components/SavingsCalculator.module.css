@@ -130,7 +130,7 @@
   letter-spacing: -0.03em;
   color: var(--sun);
 }
-.big span {
+.big .per {
   font-size: 0.38em;
   font-weight: 400;
   color: var(--on-night);

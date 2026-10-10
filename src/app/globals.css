@@ -443,3 +443,8 @@ html.lenis body {
     background: radial-gradient(circle, rgb(245 165 36 / 0.16) 0%, rgb(245 165 36 / 0.05) 40%, transparent 70%);
   }
 }
+
+/* El menú móvil ya trae su propio botón de WhatsApp. */
+[data-menu="open"] .wa-float {
+  display: none !important;
+}

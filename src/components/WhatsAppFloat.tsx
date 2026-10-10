@@ -9,6 +9,7 @@ export function WhatsAppFloat() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Escríbenos por WhatsApp"
+      className="wa-float"
       style={{
         position: "fixed",
         right: "max(16px, env(safe-area-inset-right))",

@@ -32,15 +32,22 @@ export function Header() {
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
     document.addEventListener("keydown", onKey);
     document.body.style.overflow = "hidden";
+    // El scroll suave seguiría moviendo la página detrás del menú: se detiene mientras está abierto.
+    const lenis = (window as unknown as { __lenis?: { stop: () => void; start: () => void } }).__lenis;
+    lenis?.stop();
+    document.documentElement.dataset.menu = "open";
     return () => {
+      delete document.documentElement.dataset.menu;
       document.removeEventListener("keydown", onKey);
       document.body.style.overflow = "";
+      lenis?.start();
     };
   }, [open]);
 
   const transparent = overHero && !scrolled && !open;
 
   return (
+    <>
     <header className={styles.header} data-transparent={transparent} data-open={open}>
       <div className={`container ${styles.bar}`}>
         <Link href="/" className={styles.brand} aria-label="Sinergia Energía Solar, inicio">
@@ -80,8 +87,11 @@ export function Header() {
           {open ? <X size={26} aria-hidden="true" /> : <List size={26} aria-hidden="true" />}
         </button>
       </div>
+    </header>
 
-      <div id="menu-movil" className={styles.sheet} hidden={!open}>
+    {/* Fuera del <header>: en Safari un ancestro con backdrop-filter atrapa a los
+        elementos position:fixed y el panel quedaba encerrado en los 72 px del header. */}
+    <div id="menu-movil" className={styles.sheet} hidden={!open} data-lenis-prevent>
         <nav aria-label="Móvil" className="container">
           <ul>
             {NAV.map((item, i) => (
@@ -98,7 +108,7 @@ export function Header() {
             Cotizar por WhatsApp
           </a>
         </nav>
-      </div>
-    </header>
+    </div>
+    </>
   );
 }

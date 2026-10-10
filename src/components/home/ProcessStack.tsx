@@ -20,11 +20,12 @@ export function ProcessStack() {
         cards.forEach((card, i) => {
           const next = cards[i + 1];
           if (!next) return;
+          // Se aleja solo cuando la siguiente ya la está tapando, no mientras se lee.
           gsap.to(card, {
-            scale: 0.9,
-            filter: "brightness(0.55)",
+            scale: 0.92,
+            filter: "brightness(0.7)",
             ease: "none",
-            scrollTrigger: { trigger: next, start: "top bottom", end: "top 30%", scrub: true },
+            scrollTrigger: { trigger: next, start: "top 55%", end: "top 20%", scrub: true },
           });
         });
         gsap.utils.toArray<HTMLElement>("[data-line]", root.current).forEach((line) => {

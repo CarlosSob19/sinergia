@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Outfit, Rubik } from "next/font/google";
+import localFont from "next/font/local";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
@@ -11,8 +11,9 @@ import { Preloader } from "@/components/motion/Preloader";
 import { SITE } from "@/content/site";
 import "./globals.css";
 
-const outfit = Outfit({ subsets: ["latin"], weight: ["400", "500", "600", "700"], variable: "--font-outfit", display: "swap" });
-const rubik = Rubik({ subsets: ["latin"], weight: ["400", "500"], variable: "--font-rubik", display: "swap" });
+// Fuentes servidas desde el propio sitio (variables, subconjunto latino): no dependen de Google al compilar.
+const outfit = localFont({ src: "./fonts/outfit-latin-wght-normal.woff2", weight: "100 900", variable: "--font-outfit", display: "swap" });
+const rubik = localFont({ src: "./fonts/rubik-latin-wght-normal.woff2", weight: "300 900", variable: "--font-rubik", display: "swap" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
