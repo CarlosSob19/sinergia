@@ -16,15 +16,6 @@
   border-color: transparent;
   color: #fff;
 }
-.header[data-variant="night"] {
-  background: rgb(4 14 24 / 0.45);
-  border-color: rgb(255 255 255 / 0.08);
-  color: #fff;
-}
-.header[data-variant="night"][data-transparent="true"] {
-  background: transparent;
-  border-color: transparent;
-}
 .header[data-open="true"] {
   background: var(--night);
   border-color: transparent;

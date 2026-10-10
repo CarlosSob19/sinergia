@@ -10,9 +10,7 @@ import { whatsappUrl } from "@/lib/whatsapp";
 import styles from "./Header.module.css";
 
 // Páginas que abren con una foto a sangre bajo el header.
-const HERO_ROUTES = ["/", "/soluciones/", "/foro", "/nosotros", "/proyectos", "/dia-de-sol"];
-// Páginas sobre cielo oscuro: el header nunca pasa a fondo claro.
-const NIGHT_ROUTES = ["/dia-de-sol"];
+const HERO_ROUTES = ["/", "/soluciones/", "/foro", "/nosotros", "/proyectos"];
 
 export function Header() {
   const pathname = usePathname();
@@ -50,10 +48,10 @@ export function Header() {
 
   return (
     <>
-    <header className={styles.header} data-transparent={transparent} data-open={open} data-variant={NIGHT_ROUTES.includes(pathname) ? "night" : undefined}>
+    <header className={styles.header} data-transparent={transparent} data-open={open}>
       <div className={`container ${styles.bar}`}>
         <Link href="/" className={styles.brand} aria-label="Sinergia Energía Solar, inicio">
-          <Logo tone={transparent || open || NIGHT_ROUTES.includes(pathname) ? "light" : "brand"} />
+          <Logo tone={transparent || open ? "light" : "brand"} />
         </Link>
 
         <nav aria-label="Principal" className={styles.nav}>
