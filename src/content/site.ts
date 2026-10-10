@@ -11,13 +11,19 @@ export const SITE = {
   whatsapp: "+57 300 786 4522",
   phones: ["+57 313 562 7811", "+57 313 583 6131", "+57 300 853 1949", "+57 301 298 2498"],
   emails: { gerencia: "gerencia@sinergiaenergy.com", comercial: "comercial@sinergiaenergy.com" },
-  address: { street: "Cra. 15B # 52-16, Barrio Monteverde", city: "Montería", region: "Córdoba", country: "Colombia" },
+  address: { street: "Cl. 61B # 10-177", city: "Montería", region: "Córdoba", country: "Colombia" },
   social: {
     instagram: "https://www.instagram.com/sinergia.energy",
     facebook: "https://www.facebook.com/share/3bktm9GcjXQbG8UG/",
     x: "https://x.com/Sinergia_energy",
   },
 } as const;
+
+/** Consulta para mapas: dirección completa de la oficina. */
+export const MAP_QUERY = "Cl. 61B #10-177, Montería, Córdoba, Colombia";
+export const MAP_EMBED = `https://www.google.com/maps?q=${encodeURIComponent(MAP_QUERY)}&z=16&output=embed`;
+export const MAP_LINK = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(MAP_QUERY)}`;
+export const MAP_DIRECTIONS = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(MAP_QUERY)}`;
 
 export const NAV = [
   { href: "/soluciones/hogar", label: "Hogar" },

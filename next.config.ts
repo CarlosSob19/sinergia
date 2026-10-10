@@ -16,6 +16,8 @@ const securityHeaders = [
       // Next.js inyecta scripts inline de hidratación; sin backend ni datos de usuario en el HTML.
       `script-src 'self' 'unsafe-inline'${process.env.NODE_ENV === "development" ? " 'unsafe-eval'" : ""}`,
       "connect-src 'self'",
+      // Mapa de la oficina embebido desde Google Maps.
+      "frame-src https://www.google.com https://maps.google.com",
       "frame-ancestors 'none'",
       "base-uri 'self'",
       "form-action 'self'",

@@ -1,0 +1,261 @@
+.contact {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: clamp(24px, 4vw, 56px);
+  padding-bottom: clamp(56px, 7vw, 96px);
+  margin-bottom: clamp(56px, 7vw, 96px);
+  border-bottom: 1px solid rgb(255 255 255 / 0.12);
+}
+.title {
+  font-size: clamp(40px, 5vw, 72px);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin-bottom: 28px;
+}
+.label {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--on-night-muted);
+  margin: 32px 0 14px;
+}
+
+/* WhatsApp principal */
+.whatsapp {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 22px;
+  border-radius: 20px;
+  background: linear-gradient(120deg, #25d366 0%, #1aa955 100%);
+  color: #052e16;
+  text-decoration: none;
+  box-shadow: 0 10px 30px rgb(37 211 102 / 0.22);
+  transition: transform var(--t-base) var(--ease), box-shadow var(--t-base) var(--ease);
+}
+.waIcon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 999px;
+  background: #052e16;
+  color: #25d366;
+}
+.waText {
+  display: grid;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+.waText strong {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 600;
+}
+.waText span {
+  font-size: 15px;
+  opacity: 0.85;
+}
+.waArrow {
+  flex: none;
+  transition: transform var(--t-base) var(--ease);
+}
+
+/* Asesores */
+.advisors {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.advisor {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 12px 12px;
+  padding: 14px;
+  border-radius: 18px;
+  background: rgb(255 255 255 / 0.05);
+  border: 1px solid rgb(255 255 255 / 0.1);
+  transition: background-color var(--t-base) var(--ease), border-color var(--t-base) var(--ease);
+}
+.avatar {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--brand) 22%, transparent);
+  color: var(--brand);
+}
+.who {
+  display: grid;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+.who strong {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 600;
+}
+.who span {
+  font-size: 15px;
+  color: var(--on-night-muted);
+  white-space: nowrap;
+}
+.actions {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 42px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.08);
+  color: var(--on-night);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color var(--t-fast) var(--ease), color var(--t-fast) var(--ease), transform var(--t-fast) var(--ease);
+}
+.action:active {
+  transform: scale(0.94);
+}
+.actionWa {
+  background: rgb(37 211 102 / 0.14);
+  color: #4ae08a;
+}
+.mail {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 22px;
+  color: var(--on-night);
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+/* Oficina y mapa */
+.office {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: clamp(20px, 2.5vw, 28px);
+  border-radius: var(--r-lg);
+  background: rgb(255 255 255 / 0.04);
+  border: 1px solid rgb(255 255 255 / 0.1);
+}
+.officeHead {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+.officeHead .label {
+  margin: 2px 0 6px;
+}
+.pin {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: var(--sun);
+  color: #0b1f26;
+}
+.address {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 2vw, 24px);
+  font-weight: 500;
+  line-height: 1.25;
+}
+.map {
+  position: relative;
+  flex: 1;
+  min-height: 300px;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #0d3a47;
+  border: 1px solid rgb(255 255 255 / 0.12);
+}
+.map iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.mapActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.mapActions :global(.btn) {
+  flex: 1 1 200px;
+}
+.ghost {
+  color: var(--on-night);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .whatsapp:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 40px rgb(37 211 102 / 0.32);
+  }
+  .whatsapp:hover .waArrow {
+    transform: translate(3px, -3px);
+  }
+  .advisor:hover {
+    background: rgb(255 255 255 / 0.08);
+    border-color: color-mix(in srgb, var(--brand) 55%, transparent);
+  }
+  .action:hover {
+    background: var(--sun);
+    color: #0b1f26;
+  }
+  .actionWa:hover {
+    background: #25d366;
+    color: #052e16;
+  }
+  .mail:hover {
+    color: var(--sun);
+  }
+}
+
+@media (max-width: 1000px) {
+  .contact {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 560px) {
+  .advisors {
+    grid-template-columns: 1fr;
+  }
+  .map {
+    min-height: 260px;
+  }
+}
+@media (max-width: 400px) {
+  .waText strong {
+    font-size: 17px;
+  }
+  .whatsapp {
+    padding: 16px;
+    gap: 12px;
+  }
+}

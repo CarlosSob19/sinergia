@@ -1,14 +1,15 @@
 import Link from "next/link";
-import { EnvelopeSimple, FacebookLogo, InstagramLogo, MapPin, Phone, XLogo } from "@phosphor-icons/react/dist/ssr";
+import { FacebookLogo, InstagramLogo, XLogo } from "@phosphor-icons/react/dist/ssr";
+import { FooterContact } from "./FooterContact";
 import { Logo } from "./Logo";
 import { NAV, SITE } from "@/content/site";
 import styles from "./Footer.module.css";
 
-const tel = (p: string) => `tel:${p.replace(/\s/g, "")}`;
-
 export function Footer() {
   return (
     <footer className={styles.footer}>
+      <FooterContact />
+
       <div className={`container ${styles.grid}`}>
         <div className={styles.about}>
           <Logo tone="light" />
@@ -29,32 +30,6 @@ export function Footer() {
             </li>
           </ul>
         </nav>
-
-        <div>
-          <h2 className={styles.h}>Contacto</h2>
-          <ul>
-            <li className={styles.row}>
-              <MapPin size={18} aria-hidden="true" />
-              <span>
-                {SITE.address.street}
-                <br />
-                {SITE.address.city}, {SITE.address.region}
-              </span>
-            </li>
-            {SITE.phones.map((p, i) => (
-              <li key={p} className={styles.row}>
-                <Phone size={18} aria-hidden="true" />
-                <a href={tel(p)}>
-                  Asesor {i + 1} · {p}
-                </a>
-              </li>
-            ))}
-            <li className={styles.row}>
-              <EnvelopeSimple size={18} aria-hidden="true" />
-              <a href={`mailto:${SITE.emails.comercial}`}>{SITE.emails.comercial}</a>
-            </li>
-          </ul>
-        </div>
 
         <div>
           <h2 className={styles.h}>Síguenos</h2>

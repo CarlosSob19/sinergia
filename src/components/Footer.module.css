@@ -5,7 +5,7 @@
 }
 .grid {
   display: grid;
-  grid-template-columns: 1.6fr 1fr 1.4fr 0.8fr;
+  grid-template-columns: 1.6fr 1fr 0.8fr;
   gap: 48px;
 }
 .about p {
