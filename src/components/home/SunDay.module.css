@@ -211,31 +211,87 @@
 }
 
 @media (max-width: 900px) {
-  .tracker {
-    width: 78vw;
-    bottom: 3%;
-  }
   .layout {
     grid-template-columns: 1fr;
     grid-template-rows: auto auto 1fr;
+    padding-top: calc(var(--header-h) + 20px);
   }
+  .head {
+    gap: 12px;
+  }
+  .clock {
+    font-size: 44px;
+  }
+  /* La tarjeta de texto siempre por encima de la escena. */
   .steps {
     grid-column: 1;
     grid-row: 2;
-    min-height: 170px;
-    margin-top: 24px;
-  }
-  .scene {
-    height: 60%;
-    left: -18%;
-    right: -18%;
-    width: 136%;
+    z-index: 3;
+    min-height: 150px;
+    margin-top: 16px;
   }
   .steps li {
-    padding: 18px 20px;
+    padding: 16px 18px;
+    background: rgb(4 18 26 / 0.82);
   }
   .steps strong {
-    font-size: 24px;
+    font-size: 22px;
+  }
+  .steps p {
+    font-size: 15px;
+  }
+  /* Escena del sol: ocupa el ancho real de la pantalla y solo la franja baja. */
+  .scene {
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 38%;
+  }
+  /* Panel más pequeño, centrado abajo, con giro y perspectiva moderados. */
+  .tracker {
+    width: min(48vw, 220px);
+    bottom: 4%;
+    perspective: 800px;
+    perspective-origin: 50% 10%;
+  }
+  .panel {
+    transform: rotateX(58deg) rotateY(calc(var(--tilt) * 0.6));
+  }
+}
+
+/* Móvil: la escena es una fila propia del layout (entre la tarjeta y la barra inferior),
+   así el arco del sol nunca pasa detrás del texto ni del panel. */
+@media (max-width: 700px) {
+  .layout {
+    height: 100svh;
+    min-height: 0;
+    grid-template-rows: auto auto minmax(140px, 1fr);
+    padding-bottom: calc(92px + env(safe-area-inset-bottom));
+  }
+  .scene {
+    position: relative;
+    grid-column: 1;
+    grid-row: 3;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    width: 100%;
+    height: 100%;
+    margin-top: 8px;
+  }
+  /* El panel comparte la fila de la escena: queda sobre el horizonte, nunca bajo la barra. */
+  .tracker {
+    position: relative;
+    grid-column: 1;
+    grid-row: 3;
+    justify-self: center;
+    align-self: end;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    width: min(28vw, 120px);
+    margin-bottom: 4px;
+    transform: none;
   }
 }
 

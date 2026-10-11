@@ -91,7 +91,9 @@ export function Header() {
 
     {/* Fuera del <header>: en Safari un ancestro con backdrop-filter atrapa a los
         elementos position:fixed y el panel quedaba encerrado en los 72 px del header. */}
-    <div id="menu-movil" className={styles.sheet} hidden={!open} data-lenis-prevent>
+    {/* Siempre montado: abre y cierra con transiciones CSS (interrumpibles, mismo camino de ida y vuelta).
+        `inert` lo saca del foco y de los lectores de pantalla mientras está cerrado. */}
+    <div id="menu-movil" className={styles.sheet} data-open={open} inert={!open} aria-hidden={!open} data-lenis-prevent>
         <nav aria-label="Móvil" className="container">
           <ul>
             {NAV.map((item, i) => (

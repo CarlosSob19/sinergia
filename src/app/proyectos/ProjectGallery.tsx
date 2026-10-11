@@ -28,7 +28,7 @@ export function ProjectGallery() {
         {list.map((pr) => {
           const p = photo(pr.photo);
           return (
-            <li key={pr.photo}>
+            <li key={pr.photo} className="press">
               <figure>
                 <Image src={p.src} width={p.width} height={p.height} alt={`${pr.title}: sistema solar instalado por Sinergia`} sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 33vw" />
                 <figcaption>

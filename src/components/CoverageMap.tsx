@@ -30,6 +30,10 @@ const km = (a: [number, number], b: [number, number]) => {
   return Math.round(2 * 6371 * Math.asin(Math.sqrt(h)));
 };
 
+// Lado de la etiqueta por municipio para que no se pisen (Cereté y Ciénaga de Oro están muy cerca).
+const LABEL_LEFT = new Set(["Cereté", "Tierralta"]);
+const LABEL_BELOW = new Set(["Ciénaga de Oro"]);
+
 const NEIGHBOR_LABEL: Record<string, [number, number]> = { Sucre: [690, 150], Antioquia: [560, 860], Bolivar: [740, 40] };
 
 /**
@@ -125,7 +129,12 @@ export function CoverageMap() {
                   <circle r="26" className={s.hit} />
                   <circle r={hq ? 13 : 9} className={s.pinDot} />
                   {hq && <circle r="5" className={s.pinCore} />}
-                  <text x="16" y="5" className={s.pinLabel}>
+                  <text
+                    x={LABEL_LEFT.has(name) ? -16 : LABEL_BELOW.has(name) ? 0 : 16}
+                    y={LABEL_BELOW.has(name) ? 34 : 5}
+                    textAnchor={LABEL_LEFT.has(name) ? "end" : LABEL_BELOW.has(name) ? "middle" : "start"}
+                    className={s.pinLabel}
+                  >
                     {name}
                   </text>
                 </g>

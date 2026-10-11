@@ -17,7 +17,7 @@ export function FooterContact() {
           Hablemos hoy.
         </h2>
 
-        <a className={s.whatsapp} href={whatsappUrl(SITE.whatsapp, "Hola Sinergia, quiero una cotización solar.")} target="_blank" rel="noopener noreferrer">
+        <a className={`${s.whatsapp} press`} href={whatsappUrl(SITE.whatsapp, "Hola Sinergia, quiero una cotización solar.")} target="_blank" rel="noopener noreferrer">
           <span className={s.waIcon}>
             <WhatsappLogo size={28} weight="fill" aria-hidden="true" />
           </span>
@@ -40,7 +40,7 @@ export function FooterContact() {
                 <span className="num">{p}</span>
               </span>
               <span className={s.actions}>
-                <a href={tel(p)} className={s.action} aria-label={`Llamar al asesor ${i + 1}, ${p}`}>
+                <a href={tel(p)} className={`${s.action} press`} aria-label={`Llamar al asesor ${i + 1}, ${p}`}>
                   <Phone size={17} weight="fill" aria-hidden="true" />
                   Llamar
                 </a>
@@ -48,7 +48,7 @@ export function FooterContact() {
                   href={whatsappUrl(p, `Hola Asesor ${i + 1} de Sinergia, quiero información sobre energía solar.`)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`${s.action} ${s.actionWa}`}
+                  className={`${s.action} ${s.actionWa} press`}
                   aria-label={`Escribir por WhatsApp al asesor ${i + 1}`}
                 >
                   <WhatsappLogo size={17} weight="fill" aria-hidden="true" />

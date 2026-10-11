@@ -78,6 +78,13 @@
   cursor: pointer;
   outline: none;
 }
+.pin .pinDot {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.pin:active .pinDot {
+  transform: scale(1.25);
+}
 .hit {
   fill: transparent;
 }

@@ -35,12 +35,13 @@ export function Cursor() {
           y: (e.clientY - (r.top + r.height / 2)) * 0.4,
           duration: 0.5,
           ease: "power3.out",
+          overwrite: "auto",
         });
       }
     };
     const onLeave = (e: PointerEvent) => {
       const mag = (e.target as Element | null)?.closest?.("[data-magnetic]");
-      if (mag) gsap.to(mag, { x: 0, y: 0, duration: 0.8, ease: "elastic.out(1, 0.4)" });
+      if (mag) gsap.to(mag, { x: 0, y: 0, duration: 0.6, ease: "expo.out", overwrite: "auto" });
     };
     const onOut = () => gsap.to(el, { opacity: 0, duration: 0.3 });
     const onIn = () => gsap.to(el, { opacity: 1, duration: 0.3 });

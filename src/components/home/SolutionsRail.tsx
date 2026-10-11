@@ -78,7 +78,7 @@ export function SolutionsRail() {
           const Icon = ICONS[sol.slug];
           const p = photo(sol.photo);
           return (
-            <Link key={sol.slug} href={`/soluciones/${sol.slug}`} className={s.card}>
+            <Link key={sol.slug} href={`/soluciones/${sol.slug}`} className={`${s.card} press`}>
               <div className={s.media}>
                 <div className={s.imgWrap} data-rail-img>
                   <Image src={p.src} alt="" fill sizes="(max-width: 900px) 100vw, 60vw" className={s.img} />
